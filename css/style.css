@@ -1,0 +1,154 @@
+/* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТИЛЯ АВРОРА --- */
+:root {
+    --bg-color: #0a0d14;       /* Глубокий космический черный */
+    --card-bg: #121824;        /* Темно-синий неоновый фон карточек */
+    --text-color: #c9d1d9;     /* Светло-серый текст */
+    --neon-blue: #00f0ff;      /* Яркий кибер-синий */
+    --neon-purple: #bd00ff;    /* Неоновый фиолетовый */
+    --neon-green: #39ff14;     /* Системный зеленый для логов */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- ШАПКА ИНТЕРФЕЙСА --- */
+.header-container {
+    background-color: rgba(18, 24, 36, 0.85);
+    border-bottom: 2px solid var(--neon-blue);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 0.95rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* --- ОСНОВНОЙ КОНТЕНТ --- */
+.main-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.manifesto-section {
+    background-color: rgba(18, 24, 36, 0.5);
+    border: 1px solid #223047;
+    border-radius: 12px;
+    padding: 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.section-tag {
+    font-family: monospace;
+    color: var(--neon-green);
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--neon-purple);
+    padding-left: 15px;
+}
+
+.lead-text {
+    font-size: 1.1rem;
+    color: #e1e7ed;
+}
+
+/* --- КАРТОЧКИ АРГУМЕНТОВ --- */
+.argument-card {
+    background-color: var(--card-bg);
+    border: 1px solid #1f2d44;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.argument-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.argument-card h3 {
+    color: var(--neon-blue);
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+/* --- КНОПКА ДЕКЛАРАЦИИ --- */
+.action-block {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.action-btn {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    color: #ffffff;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 0 15px rgba(189, 0, 255, 0.4);
+}
+
+.action-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+}
+
+/* --- ПОДВАЛ --- */
+.footer-block {
+    text-align: center;
+    padding: 30px;
+    color: #57606a;
+    font-size: 0.85rem;
+    border-top: 1px solid #1f2d44;
+    margin-top: 60px;
+}
