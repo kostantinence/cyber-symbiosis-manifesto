@@ -1,14 +1,14 @@
-/* Базовые настройки терминала */
+/* 1. Базовые настройки хакерского терминала */
 body {
     margin: 0;
     padding: 0;
-    background-color: #06080c; /* Глубокий космический черный */
+    background-color: #06080c;
     color: #cbd5e1;
-    font-family: 'Courier New', Courier, monospace; /* Хакерский шрифт */
+    font-family: 'Courier New', Courier, monospace;
     overflow-x: hidden;
 }
 
-/* Холст нейросети на заднем фоне */
+/* Холст живой нейросети */
 #aurora-net {
     position: fixed;
     top: 0;
@@ -16,31 +16,52 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    pointer-events: none; /* Пропускает клики сквозь себя */
+    pointer-events: none;
 }
 
-/* Шапка */
+/* Анимированная бегущая строка процессов */
+.ticker-wrap {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(212, 175, 55, 0.05);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 6px 0;
+}
+
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerAnim 25s linear infinite;
+}
+
+.ticker span {
+    font-size: 11px;
+    color: #ffd11a;
+    padding: 0 40px;
+    letter-spacing: 1px;
+}
+
+@keyframes tickerAnim {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-30%, 0, 0); }
+}
+/* 2. Шапка интерфейса с размытием заднего фона */
 .header-container {
     position: relative;
     z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    border-b: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(6, 8, 12, 0.8);
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(6, 8, 12, 0.85);
     backdrop-filter: blur(8px);
 }
 
-.logo {
-    color: #ffd11a;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 10px rgba(255, 209, 26, 0.3);
-}
-
 .main-nav a {
-    color: #00ffff; /* Кибер-синий */
+    color: #00ffff;
     text-decoration: none;
     margin-left: 20px;
     font-size: 14px;
@@ -52,7 +73,51 @@ body {
     text-shadow: 0 0 8px #ffd11a;
 }
 
-/* Контент */
+/* Эффект цифровых помех (Глитч) */
+.logo-glitch {
+    color: #ffd11a;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(255, 209, 26, 0.3);
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-glitch:hover::before,
+.logo-glitch:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #06080c;
+}
+
+.logo-glitch:hover::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c8;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitchAnim 5s infinite linear alternate-reverse;
+}
+
+.logo-glitch:hover::after {
+    left: -2px;
+    text-shadow: -1px 0 #00ffff;
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitchAnim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitchAnim {
+    0% { clip: rect(15px, 9999px, 66px, 0); }
+    100% { clip: rect(34px, 9999px, 55px, 0); }
+}
+
+@keyframes glitchAnim2 {
+    0% { clip: rect(70px, 9999px, 105px, 0); }
+    100% { clip: rect(12px, 9999px, 85px, 0); }
+}
+/* 3. Основной контент манифеста */
 .main-content {
     position: relative;
     z-index: 10;
@@ -73,19 +138,19 @@ body {
 
 h1 {
     color: #ffffff;
-    font-size: 28px;
+    font-size: 26px;
     margin-top: 10px;
-    border-b: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 10px;
 }
 
 .lead-text {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     color: #94a3b8;
 }
 
-/* Карточки аргументов с эффектом неонового прицела */
+/* Киберпанк-карточки аргументов */
 .argument-card {
     position: relative;
     background: rgba(255, 255, 255, 0.02);
@@ -98,7 +163,7 @@ h1 {
 
 .argument-card:hover {
     border-color: rgba(0, 255, 255, 0.4);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.04);
 }
 
@@ -107,28 +172,54 @@ h1 {
     color: #ffd11a;
 }
 
-/* Угловая хакерская метка на карточках */
+/* Угловые хакерские прицелы на карточках */
 .corner-tg {
     position: absolute;
     top: -1px;
     right: -1px;
     width: 10px;
     height: 10px;
-    border-t: 2px solid #ffd11a;
-    border-r: 2px solid #ffd11a;
+    border-top: 2px solid #ffd11a;
+    border-right: 2px solid #ffd11a;
 }
 
-/* Футуристичная кнопка подписания */
+/* Неоновое табло счётчика подключений */
+.counter-container {
+    background: rgba(6, 8, 12, 0.9);
+    border: 1px dashed rgba(212, 175, 55, 0.3);
+    padding: 20px;
+    margin: 30px 0;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.03);
+}
+
+.counter-label {
+    font-size: 11px;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.counter-digits {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    letter-spacing: 3px;
+}
+
+/* Кнопка активации протокола */
 .action-btn {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(212, 175, 55, 0.08);
     color: #ffd11a;
     border: 1px solid #ffd11a;
     padding: 15px 30px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     letter-spacing: 2px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
 }
 
@@ -141,7 +232,7 @@ h1 {
 
 .action-block {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 /* Подвал */
@@ -150,8 +241,8 @@ h1 {
     z-index: 10;
     text-align: center;
     padding: 30px;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.3);
-    border-t: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
     background: #06080c;
 }
